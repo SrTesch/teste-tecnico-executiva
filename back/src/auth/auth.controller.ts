@@ -53,8 +53,6 @@ export class AuthController {
       ) {
         return res.status(401).json({ message: (error as { message: string }).message }); // 401 Unauthorized
       }
-
-      // Para outros erros inesperados
       console.error(error);
       return res.status(500).json({ message: 'Erro interno do servidor.' });
     }

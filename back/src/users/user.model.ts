@@ -1,6 +1,6 @@
 export interface User {
   id: number;
   email: string;
-  password?: string; // A senha é opcional aqui pois não queremos retorná-la em toda ocasião
+  password?: string;
   created_at: string;
 }

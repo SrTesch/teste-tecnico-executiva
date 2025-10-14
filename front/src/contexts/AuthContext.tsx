@@ -1,45 +1,41 @@
-import { createContext, useState, useEffect } from 'react';
-import type { ReactNode } from 'react';
-// import api from '../services/api';
+import { createContext, useState, useEffect, type ReactNode } from 'react';
 
-// Define a "forma" dos dados que o nosso contexto irá fornecer
 interface AuthContextData {
   signed: boolean;
   token: string | null;
+  loading: boolean;
   login(token: string): void;
   logout(): void;
 }
 
-// Cria o contexto com um valor padrão
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-// Cria o "Provider", o componente que irá abraçar nossa aplicação e fornecer os dados de autenticação
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [token, setToken] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Este efeito roda uma vez quando o componente é montado
   useEffect(() => {
-    // Busca o token salvo no localStorage para manter o usuário logado
     const storedToken = localStorage.getItem('token');
+    
     if (storedToken) {
       setToken(storedToken);
     }
+
+    setLoading(false); 
   }, []);
 
-  // Função para realizar o login
   function login(tokenValue: string) {
-    setToken(tokenValue);
     localStorage.setItem('token', tokenValue);
+    setToken(tokenValue);
   }
 
-  // Função para realizar o logout
   function logout() {
-    setToken(null);
     localStorage.removeItem('token');
+    setToken(null);
   }
 
   return (
-    <AuthContext.Provider value={{ signed: !!token, token, login, logout }}>
+    <AuthContext.Provider value={{ signed: !!token, token, loading, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

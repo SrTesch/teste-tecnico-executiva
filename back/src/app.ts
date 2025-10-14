@@ -3,7 +3,7 @@ import cors from 'cors';
 import 'dotenv/config';
 
 import authRoutes from './auth/auth.routes';
-import tasksRoutes from './tasks/tasks.routes'; // Importamos as rotas de tarefas
+import tasksRoutes from './tasks/tasks.routes';
 
 class App {
   public app: Application;
@@ -25,7 +25,7 @@ class App {
     });
 
     this.app.use('/auth', authRoutes);
-    this.app.use('/tasks', tasksRoutes); // Usamos as rotas de tarefas com o prefixo '/tasks'
+    this.app.use('/tasks', tasksRoutes); 
   }
 }
 

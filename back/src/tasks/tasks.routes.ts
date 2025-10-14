@@ -8,7 +8,6 @@ const tasksRoutes = Router();
 const tasksService = new TasksService();
 const tasksController = new TasksController(tasksService);
 
-// A partir daqui, TODAS as rotas definidas em 'tasksRoutes' passarão primeiro pelo authMiddleware.
 tasksRoutes.use(authMiddleware);
 
 tasksRoutes.get('/', tasksController.getAll);

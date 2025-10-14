@@ -24,7 +24,6 @@ const SignupPage = () => {
       await api.post('/auth/signup', { email, password });
       setSuccess('Cadastro realizado com sucesso! Você será redirecionado para o login.');
       
-      // Redireciona para a página de login após 2 segundos
       setTimeout(() => {
         navigate('/login');
       }, 2000);
@@ -40,36 +39,39 @@ const SignupPage = () => {
 
   return (
     <div className="form-container">
-      <h1>Criar Conta</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="E-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Confirme a Senha"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Cadastrar</button>
-      </form>
-      {error && <p className="message error">{error}</p>}
-      {success && <p className="message success">{success}</p>}
-      <p>
-        Já tem uma conta? <Link to="/login">Faça Login</Link>
-      </p>
+      <div className="loginCont">
+        
+        <h1>Criar Conta</h1>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Confirme a Senha"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Cadastrar</button>
+        </form>
+        {error && <p className="message error">{error}</p>}
+        {success && <p className="message success">{success}</p>}
+        <p>
+          Já tem uma conta? <Link to="/login">Faça Login</Link>
+        </p>
+      </div>
     </div>
   );
 };
