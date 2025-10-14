@@ -2,6 +2,9 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 
+// Importa as novas rotas de autenticação
+import authRoutes from './auth/auth.routes';
+
 class App {
   public app: Application;
 
@@ -13,7 +16,6 @@ class App {
 
   private middlewares(): void {
     this.app.use(cors());
-
     this.app.use(express.json());
   }
 
@@ -22,6 +24,7 @@ class App {
       res.status(200).json({ message: 'API do To-Do App está funcionando!' });
     });
 
+    this.app.use('/auth', authRoutes);
   }
 }
 
