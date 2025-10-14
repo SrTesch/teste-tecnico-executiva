@@ -63,3 +63,34 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
+  font-family: inherit;
+  background-color: #222222;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Links e Mensagens */
+a {
+  color: #646cff;
+  text-decoration: none;
+}
+.message {
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+}
+.error {
+  background-color: #ff4d4d20;
+  color: #ff8c8c;
+}
+.success {
+  background-color: #4dff8a20;
+  color: #8cffb0;
+}
