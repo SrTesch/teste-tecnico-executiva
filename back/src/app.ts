@@ -2,8 +2,8 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import 'dotenv/config';
 
-// Importa as novas rotas de autenticação
 import authRoutes from './auth/auth.routes';
+import tasksRoutes from './tasks/tasks.routes'; // Importamos as rotas de tarefas
 
 class App {
   public app: Application;
@@ -25,6 +25,7 @@ class App {
     });
 
     this.app.use('/auth', authRoutes);
+    this.app.use('/tasks', tasksRoutes); // Usamos as rotas de tarefas com o prefixo '/tasks'
   }
 }
 
